@@ -37,7 +37,7 @@ function Person(obj) {
 }
 
 const ryan = new Person({ name: "Ryan", age: 32 });
-const haynes = new Person({ name: "Haynes", age: "8 mmonths" });
+const haynes = new Person({ name: "Haynes", age: "8 months" });
 
 // ryan.speak();
 // haynes.speak();
@@ -63,24 +63,31 @@ const haynes = new Person({ name: "Haynes", age: "8 mmonths" });
 // Instantiated with the NEW keyword
 // THIS becomes the object which will be returned by NEW
 
-function Animal(object) {
-  this.name = object.name;
+function Parent(attributes) {
+  this.newAge = attributes.age;
+  this.newName = attributes.name;
+  this.newLocation = attributes.location;
+  this.newPhrase = attributes.phrase;
+  console.log(this);
 }
 
-// function Person(attributes) {
-// this.age = attributes.age;
-// this.name = attributes.name;
-// this.homeTown = attributes.homeTown;
-// this.speak = function() {
-// return `Hello, my name is ${this.name}`;
-// };
-// }
+Parent.prototype.speak = function() {
+  return `${this.newName} says ${this.newPhrase}`;
+};
 
-// const fred = new Person({
-//   age: 32,
-//   name: "Fred",
-//   homeTown: "Bedrock"
-// });
+const fred = new Parent({
+  age: 35,
+  name: "Fred",
+  location: "Bedrock",
+  phrase: "Yabba dabba do"
+});
+
+const willma = new Parent({
+  age: 37,
+  name: "Wilma",
+  location: "Bedrock",
+  phrase: "Fred!"
+});
 
 //=== The Object Prototype
 // The mechanism by which all objects can inherit properties from one another
