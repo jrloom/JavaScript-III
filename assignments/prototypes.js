@@ -207,6 +207,8 @@ const giant = new Villain({
   language: "No"
 });
 console.log(`---------Stretch-------------------------------------`);
+console.log(`This is ${sorc.name}, a sorcerer with an affinity for lightning, from ${sorc.team}`);
+console.log(`And here's ${giant.name}, a giant of a giant from ${giant.team}`);
 console.log(sorc.greet());
 console.log(giant.snores());
 console.log(sorc.blast());
