@@ -129,6 +129,98 @@ console.log(mage.takeDamage()); // Bruce took damage.
 console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 // Stretch task:
-// * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
-// * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+// * Create Villain and Hero constructor functions that inherit from the Humanoid constructor
+//function.
+// * Give the Hero and Villains different methods that could be used to remove health points
+//from objects which could result in destruction if health gets to 0 or drops below 0;
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+function Hero(attrs) {
+  Humanoid.call(this, attrs);
+}
+
+Hero.prototype = Object.create(Humanoid.prototype);
+
+Hero.prototype.blast = function() {
+  return `${this.name} cackles as he zaps his foe!`;
+};
+
+Hero.prototype.ready = function() {
+  return `${this.name} readies himself for his foe's counter strike!`;
+};
+
+function Villain(attrs) {
+  Humanoid.call(this, attrs);
+}
+
+Villain.prototype = Object.create(Humanoid.prototype);
+
+Villain.prototype.snores = function() {
+  return `${this.name} snores`;
+};
+
+Villain.prototype.confused = function() {
+  return `${this.name} looks around, confused`;
+};
+
+Villain.prototype.yawn = function() {
+  return `${this.name} yawns`;
+};
+
+Villain.prototype.wonder = function() {
+  return `${this.name} is confused by the repetition`;
+};
+
+Villain.prototype.drop = function() {
+  return `${this.name} picks up a large rock, and drops it on our hero!`;
+};
+
+Villain.prototype.sleep = function() {
+  return `${this.name} goes back to sleep`;
+};
+
+const sorc = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 4,
+    height: 8
+  },
+  healthPoints: 20,
+  name: "Roy",
+  team: "Tower of Blues",
+  weapons: ["Lightning"],
+  language: "sorcspeak"
+});
+
+const giant = new Villain({
+  createdAt: new Date(),
+  dimensions: {
+    length: 5,
+    width: 8,
+    height: 15
+  },
+  healthPoints: 3000,
+  name: "Guffaw",
+  team: "Amicable Lands of Disinterested Individuals",
+  weapons: ["Rock"],
+  language: "No"
+});
+console.log(`---------Stretch-------------------------------------`);
+console.log(sorc.greet());
+console.log(giant.snores());
+console.log(sorc.blast());
+console.log(giant.takeDamage());
+console.log(giant.confused());
+console.log(sorc.ready());
+console.log(sorc.ready());
+console.log(sorc.ready());
+console.log(sorc.ready());
+console.log(giant.yawn());
+console.log(sorc.ready());
+console.log(giant.wonder());
+console.log(sorc.blast());
+console.log(giant.takeDamage());
+console.log(giant.drop());
+console.log(sorc.destroy());
+console.log(giant.sleep());
